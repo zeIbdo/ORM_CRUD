@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ORM_CRUD
+namespace ORM_CRUD.Context
 {
     public class AppDbContext : DbContext
     {
@@ -15,7 +15,7 @@ namespace ORM_CRUD
             optionsBuilder.UseSqlServer("Server=DESKTOP-6KFQ39N;Database=ProductsCA;Trusted_Connection=true");
             base.OnConfiguring(optionsBuilder);
         }
-        DbSet<Product> Products { get; set; }
-        DbSet<Category> Categories { get; set; }
+        public DbSet<Product> Products { get; set; } = null!;
+        public DbSet<Category> Categories { get; set; } = null!;
     }
 }
