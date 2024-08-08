@@ -19,7 +19,7 @@ namespace ORM_CRUD.Models
         }
         public async Task<Product> GetByIdAsync(int id)
         {
-            var product = await _appDbContext.Products.FirstOrDefaultAsync(c => c.Id == id);
+            var product = await _appDbContext.Products.Include(x=>x.category).FirstOrDefaultAsync(c => c.Id == id);
             if (product == null)
             {
                 throw new NotFoundException("Not found");
@@ -28,7 +28,7 @@ namespace ORM_CRUD.Models
         }
         public async Task<List<Product>> GetCategoriesAsync()
         {
-            var products = await _appDbContext.Products.AsNoTracking().ToListAsync();
+            var products = await _appDbContext.Products.Include(x=>x.category).AsNoTracking().ToListAsync();
             return products;
         }
         public async Task DeleteAsync(int id)

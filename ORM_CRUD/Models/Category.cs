@@ -15,7 +15,7 @@ namespace ORM_CRUD.Models
         [MaxLength(100)]
         [MinLength(3)]
         public string Name { get; set; } = null!;
-        public ICollection<Category> Categories { get; set; }=new List<Category>();
+        public ICollection<Product> Products { get; set; }=new List<Product>();
         public override string ToString()
         {
             return $"{Id} {Name}";
